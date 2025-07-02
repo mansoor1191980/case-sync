@@ -28,12 +28,19 @@ def get_db_connection():
 def sync_case():
     data = request.get_json()
 
-    Casenumber = data.get('Casenumber')
-    DCRID = data.get('DCRID', '')
-    Client = data.get('Client', '')
-    Protocol = data.get('Protocol', '')
-    Status = data.get('Status', '')
-    Description = data.get('Description', '')
+    #Casenumber = data.get('Casenumber')
+    #DCRID = data.get('DCRID', '')
+    #Client = data.get('Client', '')
+    #Protocol = data.get('Protocol', '')
+    #Status = data.get('Status', '')
+    #Description = data.get('Description', '')
+
+    Casenumber = "5001x00001A1B2C"
+    DCRID = "12345"
+    Client = "Abbvie"
+    Protocol = "M16_000"
+    Status = "Pending verification"
+    Description = "Sample case comments"
     
     if not Casenumber:
         return jsonify({"error": "case number is required"}), 400
