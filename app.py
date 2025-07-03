@@ -49,17 +49,20 @@ def sync_case():
         conn = get_db_connection()
         cursor = conn.cursor()
 
-        cursor.execute("""
-            MERGE INTO Cases4mSalesforce AS target
-            USING (SELECT ? AS Id) AS source
-            ON target.Id = source.Id
-            WHEN MATCHED THEN
-                UPDATE SET Casenumber = ?, DCRID = ?, Client=?, protocol=?, Status=?, Description = ?
-            WHEN NOT MATCHED THEN
-                INSERT (casenumber, DCRID, Client, protocol, status, Description)
-                VALUES (?, ?, ?, ?, ?,?);
-        """, (Casenumber, DCRID, Client, Protocol, Status, Description,
-              Casenumber, DCRID, Client, Protocol, Status, Description))
+        Query=f"INSERT INTO Cases4mSalesforce VALUES ({Casenumber},{DCRID},{Client},{protocol},{Status},{Description})"
+        cursor.execute(Query)
+        
+        #cursor.execute("""
+        #    MERGE INTO Cases4mSalesforce AS target
+        #    USING (SELECT ? AS Id) AS source
+        #    ON target.Id = source.Id
+        #    WHEN MATCHED THEN
+        #        UPDATE SET Casenumber = ?, DCRID = ?, Client=?, protocol=?, Status=?, Description = ?
+        #    WHEN NOT MATCHED THEN
+        #        INSERT (casenumber, DCRID, Client, protocol, status, Description)
+        #        VALUES (?, ?, ?, ?, ?,?);
+        #""", (Casenumber, DCRID, Client, Protocol, Status, Description,
+        #      Casenumber, DCRID, Client, Protocol, Status, Description))
 
         conn.commit()
         cursor.close()
