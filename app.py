@@ -8,14 +8,6 @@ load_dotenv()
 app = Flask(__name__)
 
 def get_db_connection():
-    #conn_str = (
-     #   f"DRIVER={{{os.getenv('DB_DRIVER')}}};"
-      #  f"SERVER={os.getenv('DB_SERVER')};"
-       # f"DATABASE={os.getenv('DB_NAME')};"
-        #f"UID={os.getenv('DB_USER')};"
-        #f"PWD={os.getenv('DB_PASSWORD')};"
-   # )
-
     conn_str = (
     "DRIVER={ODBC Driver 17 for SQL Server};"
     "SERVER=ps02;"
@@ -49,7 +41,7 @@ def sync_case():
         conn = get_db_connection()
         cursor = conn.cursor()
 
-        query = f"INSERT INTO Cases4mSalesforce VALUES ({Casenumber},{DCRID},{Client},{Protocol},{Status},{Description}) "
+        #query = f"INSERT INTO Cases4mSalesforce VALUES ({Casenumber},{DCRID},{Client},{Protocol},{Status},{Description}) "
         #cursor.execute(query)
         #cursor.execute("""
         #    MERGE INTO Cases4mSalesforce AS target
@@ -74,8 +66,8 @@ def sync_case():
         return jsonify({"error": "Server error"}), 500
 
 if __name__ == '__main__':
-    #app.run(port=int(os.getenv("PORT", 5000)))
-      app.run(host="0.0.0.0", port=10000)
+    app.run(port=int(os.getenv("PORT", 10000)))
+     # app.run(host="0.0.0.0", port=10000)
 
 if __name__ == '__main__':
     app.run(debug=True)
