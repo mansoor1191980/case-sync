@@ -38,7 +38,7 @@ def sync_case():
         return jsonify({"error": "case number is required"}), 400
 
     try:
-        #conn = get_db_connection()
+        conn = get_db_connection()
         #cursor = conn.cursor()
 
         #query = f"INSERT INTO Cases4mSalesforce VALUES ({Casenumber},{DCRID},{Client},{Protocol},{Status},{Description}) "
@@ -57,7 +57,7 @@ def sync_case():
 
         #conn.commit()
         #cursor.close()
-        #conn.close()
+        conn.close()
 
         return jsonify({"message": "Case synced successfully"}), 200
 
