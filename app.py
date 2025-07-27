@@ -9,7 +9,8 @@ app = Flask(__name__)
 
 def get_db_connection():
     conn_str = (
-    "DRIVER={ODBC Driver 17 for SQL Server};"
+    #"DRIVER={ODBC Driver 17 for SQL Server
+    "DRIVER={SQL Server};"
     "SERVER=ps02;"
     "DATABASE=global;"
     "Trusted_Connection=yes;"
