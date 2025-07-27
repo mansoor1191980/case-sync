@@ -50,7 +50,7 @@ def sync_case():
         cursor = conn.cursor()
 
         query = f"INSERT INTO Cases4mSalesforce VALUES ({Casenumber},{DCRID},{Client},{Protocol},{Status},{Description}) "
-        cursor.execute(query)
+        #cursor.execute(query)
         #cursor.execute("""
         #    MERGE INTO Cases4mSalesforce AS target
         #    USING (SELECT ? AS Id) AS source
