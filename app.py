@@ -59,7 +59,7 @@ def sync_case():
         #cursor.close()
         conn.close()
 
-        return jsonify({"message": "Case synced successfully"}), 200
+        return jsonify({"message": "Case synced successfully1"}), 200
 
     except Exception as e:
         print(f"Error: {e}")
